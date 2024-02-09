@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JimmyBjorklund/sharepoint-client.git"
+    "url": "git+https://github.com/JimmyBjorklund/sharepoint-client.git"
   },
   "engines": {
     "node": ">=18"

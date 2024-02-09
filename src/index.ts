@@ -1,2 +1,2 @@
-import { SharepointClient } from "./sharepoint-client";
-export { SharepointClient };
+import { SharepointApi } from "./sharepoint-api";
+export { SharepointApi };

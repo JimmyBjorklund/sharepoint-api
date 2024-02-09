@@ -1,7 +1,7 @@
-sharepoint-client
+sharepoint-api
 ====
 
-[![NPM](https://nodei.co/npm/sharepoint-client.png)](https://nodei.co/npm/sharepoint-client/)
+[![NPM](https://nodei.co/npm/sharepoint-api.png)](https://nodei.co/npm/sharepoint-api/)
 
 ## Introduction
 This client makes it easier to upload/download and list files on your Microsoft SharePoint account.
@@ -87,13 +87,13 @@ const siteName: "MyGroup";
 const clientId: "00000000-0000-0000-0000-000000000000";
 const clientSecret: "0000000000000000000000000000000000000000";
   
-const client = new SharepointClient({
-                                     tenantId,
-                                     tenantName,
-                                     siteName,
-                                     clientId,
-                                     clientSecret
-                                    });
+const client = new SharepointApi({
+                                   tenantId,
+                                   tenantName,
+                                   siteName,
+                                   clientId,
+                                   clientSecret
+                                  });
 // Get a Azure AD login token.                                    
 const token = await client.login();
 if (token === undefined) {

@@ -1,6 +1,6 @@
 {
-  "name": "sharepoint-client",
-  "version": "1.0.0",
+  "name": "@jimmybjorklund/sharepoint-api",
+  "version": "1.0.1",
   "description": "Lets you easily access and update files on sharepoint",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JimmyBjorklund/sharepoint-client.git"
+    "url": "git+https://github.com/JimmyBjorklund/sharepoint-api.git"
   },
   "engines": {
     "node": ">=18"
@@ -35,7 +35,7 @@
   ],
   "keywords": [
     "sharepoint",
-    "sharepoint-client",
+    "sharepoint-api",
     "azure",
     "office365"
   ]

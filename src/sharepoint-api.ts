@@ -1,60 +1,7 @@
 import axios from "axios";
 import * as qs from "qs";
 
-/**
- * This is a simple example of how to use the Microsoft Graph API to upload a file to a SharePoint site.
- *
- * For this to work you need to create a new app in Azure AD and give it the following permissions:
- * Microsoft Graph
- * - Directory.ReadWrite.All
- * - Files.ReadWrite.All
- *
- * URL: https://entra.microsoft.com/
- *
- * Sample code:
- *   // This is the name of the tenant in SharePoint, normally first part of the url.
- *   // sample: myName.sharepoint.com
- *   const tenantName: "myName";
- *   const tenantId: "00000000-0000-0000-0000-000000000000";
- *
- *   // This is the name of the site (group in teams) in SharePoint.
- *   const siteName: "MyGroup";
- *
- *   // This is the id and secret of the app you created in Azure AD.
- *   const clientId: "00000000-0000-0000-0000-000000000000";
- *   const clientSecret: "0000000000000000000000000000000000000000";
- *
- *   const client = new SharepointClient({
- *                             tenantId,
- *                             tenantName,
- *                             siteName,
- *                             clientId,
- *                             clientSecret
- *                           });
- *
- *   const token = await client.login();
- *   if (token === undefined) {
- *     console.log("Error getting token");
- *     return;
- *   }
- *   const site = await azure.getSite(token);
- *   if (site === undefined) {
- *     console.log("Error getting site");
- *     return;
- *   }
- *   const siteId = client.getSiteId(site);
- *   const driveName = "Dokument"; // Folder name in SharePoint.
- *   const driver = await client.getDrive(token, siteId, driveName);
- *   if (driver === undefined) {
- *     console.log("Error getting drive");
- *     return;
- *   }
- *   const path = "/TestUploadFiles";
- *   const fileName = "test.txt";
- *   const res = await client.upload(token, driver.id, path, fileName, "text/plain");
- *   console.log("Upload response", res);
- */
-export class SharepointClient {
+export class SharepointApi {
   private tenantId: string;
   private tenantName: string;
   private siteName: string;
@@ -107,7 +54,7 @@ export class SharepointClient {
    * @param token - The token from the login method.
    * @returns The site or undefined if an error occurred.
    */
-  public getSite = async (token: Azure.Token): Promise<SharepointClient.Site | undefined> => {
+  public getSite = async (token: Azure.Token): Promise<SharepointApi.Site | undefined> => {
     const url = `https://graph.microsoft.com/v1.0/sites/${this.tenantName}.sharepoint.com:/sites/${this.siteName}`;
     const options = {
       headers: {
@@ -130,7 +77,7 @@ export class SharepointClient {
    * @param siteId - The id of the site.
    * @returns The drives or undefined if an error occurred.
    */
-  public getDrives = async (token: Azure.Token, siteId: string): Promise<SharepointClient.Drive[] | undefined> => {
+  public getDrives = async (token: Azure.Token, siteId: string): Promise<SharepointApi.Drive[] | undefined> => {
     const url = `https://graph.microsoft.com/v1.0/sites/${siteId}/Drives`;
     const options = {
       headers: {
@@ -154,7 +101,7 @@ export class SharepointClient {
    * @param driveName - The name of the drive to get.
    * @returns The drive or undefined if an error occurred.
    */
-  public getDrive = async (token: Azure.Token, siteId: string, driveName: string): Promise<SharepointClient.Drive | undefined> => {
+  public getDrive = async (token: Azure.Token, siteId: string, driveName: string): Promise<SharepointApi.Drive | undefined> => {
     const drives = await this.getDrives(token, siteId);
     if (drives === undefined) {
       console.log("Error getting drives");
@@ -173,7 +120,7 @@ export class SharepointClient {
    * @param path - The path to the items in from.
    * @returns The items or undefined if an error occurred.
    */
-  public getItems = async (token: Azure.Token, driverId: string, path: string): Promise<SharepointClient.Item[] | undefined> => {
+  public getItems = async (token: Azure.Token, driverId: string, path: string): Promise<SharepointApi.Item[] | undefined> => {
     const url = `https://graph.microsoft.com/v1.0/Drives/${driverId}/root:/${path}:/Children.`;
     const options = {
       headers: {
@@ -226,7 +173,7 @@ export class SharepointClient {
    * @param data - The file content as a buffer.
    * @returns The uploaded item or undefined if an error occurred.
    */
-  public upload = async (token: Azure.Token, driverId: string, path: string, fileName: string, contentType: string, data: Buffer): Promise<SharepointClient.Item | undefined> => {
+  public upload = async (token: Azure.Token, driverId: string, path: string, fileName: string, contentType: string, data: Buffer): Promise<SharepointApi.Item | undefined> => {
     const url = `https://graph.microsoft.com/v1.0//drives/${driverId}/root:${path}/${fileName}:/content`;
     const options = {
       headers: {
@@ -247,7 +194,7 @@ export class SharepointClient {
       });
   };
 
-  public getSiteId = (site: SharepointClient.Site): string => {
+  public getSiteId = (site: SharepointApi.Site): string => {
     return site.id.split(",")[1];
   };
 }
@@ -260,7 +207,7 @@ export namespace Azure {
   }
 }
 
-export namespace SharepointClient {
+export namespace SharepointApi {
   export interface Site {
     "@odata.context": string;
     createdDateTime: string;

@@ -1,7 +1,7 @@
 sharepoint-api
 ====
 
-[![NPM](https://nodei.co/npm/sharepoint-api.png)](https://nodei.co/npm/sharepoint-api/)
+[![NPM](https://nodei.co/npm/@jimmybjorklund/sharepoint-api.png)](https://nodei.co/npm/@jimmybjorklund/sharepoint-api/)
 
 ## Introduction
 This client makes it easier to upload/download and list files on your Microsoft SharePoint account.

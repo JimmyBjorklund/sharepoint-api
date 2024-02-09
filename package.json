@@ -1,0 +1,42 @@
+{
+  "name": "sharepoint-client",
+  "version": "1.0.0",
+  "description": "Lets you easily access and update files on sharepoint",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "prepublish": "npm run build",
+  "scripts": {
+    "build": "tsc -b",
+    "start": "ts-node tests/index.ts",
+    "prettier": "prettier --write src/"
+  },
+  "author": "Jimmy Björklund",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "qs": "^6.11.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "@types/qs": "^6.9.11",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JimmyBjorklund/sharepoint-client.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "sharepoint",
+    "sharepoint-client",
+    "azure",
+    "office365"
+  ]
+}

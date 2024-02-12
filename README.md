@@ -12,7 +12,7 @@ client access token for this api for this library to work.
 ## Installation
 
 ```
-$ npm install sharepoint-client
+$ npm install @jimmybjorklund/sharepoint-client
 ```
 
 ## Create access.

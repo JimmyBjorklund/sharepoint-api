@@ -1,6 +1,6 @@
 {
   "name": "@jimmybjorklund/sharepoint-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lets you easily access and update files on sharepoint",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
